@@ -1,13 +1,14 @@
 /* Global Styles */
+.app-container {
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.app-container {
-  padding: 20px;
 }
 
 header {
@@ -39,12 +40,18 @@ h1 {
 .expense-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 90vw;
 }
 
 input {
@@ -52,6 +59,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
+  width: 50%;
 }
 
 .submit-button {
@@ -60,7 +68,9 @@ input {
   color: white;
   border: none;
   border-radius: 5px;
+  margin: 20px;
   cursor: pointer;
+  width: 50%;
 }
 
 .submit-button:hover {
@@ -69,7 +79,12 @@ input {
 
 .expense-list {
   list-style: none;
-  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .expense-item {
@@ -80,6 +95,7 @@ input {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  width: 50vw;
 }
 
 .edit-btn,
@@ -114,10 +130,34 @@ input {
   color: #333;
 }
 
+.light h1 {
+  color: #333; /* Light theme color for h1 */
+}
+
+.light .expense-list {
+  background-color: #fff; /* Light theme background for expense list */
+}
+
+.light .expense-item {
+  background-color: #f9f9f9; /* Light background for expense items */
+}
+
 /* Dark Theme */
 .dark {
   background-color: #333;
   color: #fff;
+}
+
+.dark h1 {
+  color: #fff; /* Dark theme color for h1 */
+}
+
+.dark .expense-list {
+  background-color: #444; /* Dark theme background for expense list */
+}
+
+.dark .expense-item {
+  background-color: #555; /* Dark background for expense items */
 }
 
 .dark .theme-toggle {
@@ -126,10 +166,6 @@ input {
 
 .dark .theme-toggle:hover {
   background-color: #495057;
-}
-
-.dark .expense-item {
-  background-color: #444;
 }
 
 .dark .submit-button {

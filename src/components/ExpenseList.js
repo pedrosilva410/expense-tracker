@@ -24,7 +24,7 @@ const ExpenseList = ({ expenses, onRemoveExpense, onUpdateExpense }) => {
   };
 
   return (
-    <div>
+    <div className="expense-container">
       <h2>Expense List</h2>
       <ul className="expense-list">
         {expenses.map((expense) => (
