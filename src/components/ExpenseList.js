@@ -26,14 +26,21 @@ const ExpenseList = ({ expenses, onRemoveExpense, onUpdateExpense }) => {
   return (
     <div>
       <h2>Expense List</h2>
-      <ul>
+      <ul className="expense-list">
         {expenses.map((expense) => (
-          <li key={expense.id}>
+          <li key={expense.id} className="expense-item">
             <span>
               {expense.description} - ${expense.amount} - {expense.category}
             </span>
-            <button onClick={() => handleEdit(expense)}>Edit</button>
-            <button onClick={() => handleDelete(expense.id)}>Delete</button>
+            <button className="edit-btn" onClick={() => handleEdit(expense)}>
+              Edit
+            </button>
+            <button
+              className="delete-btn"
+              onClick={() => handleDelete(expense.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>

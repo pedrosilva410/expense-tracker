@@ -9,7 +9,6 @@ const ExpenseForm = ({ onAddExpense }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Create expense object
     const newExpense = {
       id: uuidv4(),
       description,
@@ -17,18 +16,15 @@ const ExpenseForm = ({ onAddExpense }) => {
       category,
     };
 
-    // Add expense via callback
     onAddExpense(newExpense);
-
-    // Reset form
     setDescription("");
     setAmount("");
     setCategory("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="expense-form">
+      <div className="form-group">
         <label>Description:</label>
         <input
           type="text"
@@ -37,7 +33,7 @@ const ExpenseForm = ({ onAddExpense }) => {
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label>Amount:</label>
         <input
           type="number"
@@ -46,7 +42,7 @@ const ExpenseForm = ({ onAddExpense }) => {
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label>Category:</label>
         <input
           type="text"
@@ -55,7 +51,9 @@ const ExpenseForm = ({ onAddExpense }) => {
           required
         />
       </div>
-      <button type="submit">Add Expense</button>
+      <button type="submit" className="submit-button">
+        Add Expense
+      </button>
     </form>
   );
 };
