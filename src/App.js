@@ -1,52 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseForm from "./components/ExpenseForm";
 import "./App.css"; // Import the stylesheet
 
 const App = () => {
   const [expenses, setExpenses] = useState([]);
-  const [theme, setTheme] = useState("light");
-
-  // Load the saved theme from localStorage
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-  }, []);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
 
   // Toggle between light and dark themes
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme); // Save to localStorage
-  };
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      return newTheme;
+    });
+  }, []);
 
   // Add expense
-  const addExpense = (expense) => {
-    setExpenses([...expenses, expense]);
-  };
+  const addExpense = useCallback(
+    (expense) => setExpenses((prevExpenses) => [...prevExpenses, expense]),
+    []
+  );
 
   // Remove expense
-  const removeExpense = (id) => {
-    setExpenses(expenses.filter((expense) => expense.id !== id));
-  };
+  const removeExpense = useCallback(
+    (id) =>
+      setExpenses((prevExpenses) =>
+        prevExpenses.filter((expense) => expense.id !== id)
+      ),
+    []
+  );
 
   // Update expense
-  const updateExpense = (updatedExpense) => {
-    setExpenses(
-      expenses.map((expense) =>
-        expense.id === updatedExpense.id ? updatedExpense : expense
-      )
-    );
-  };
+  const updateExpense = useCallback(
+    (updatedExpense) =>
+      setExpenses((prevExpenses) =>
+        prevExpenses.map((expense) =>
+          expense.id === updatedExpense.id ? updatedExpense : expense
+        )
+      ),
+    []
+  );
+
+  // Memoize theme button text
+  const themeButtonText = useMemo(
+    () => (theme === "light" ? "Dark" : "Light"),
+    [theme]
+  );
 
   return (
     <div className={`app-container ${theme}`}>
       <header>
         <h1>Expense Tracker</h1>
         <button className="theme-toggle" onClick={toggleTheme}>
-          Toggle {theme === "light" ? "Dark" : "Light"} Mode
+          Toggle {themeButtonText} Mode
         </button>
       </header>
       <ExpenseForm onAddExpense={addExpense} />
