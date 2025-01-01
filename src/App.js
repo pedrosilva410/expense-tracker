@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseForm from "./components/ExpenseForm";
 import "./App.css"; // Import the stylesheet
@@ -6,7 +6,7 @@ import "./App.css"; // Import the stylesheet
 const App = () => {
   const [expenses, setExpenses] = useState([]);
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
+    () => localStorage.getItem("theme") || "dark"
   );
 
   // Toggle between light and dark themes
