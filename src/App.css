@@ -1,7 +1,18 @@
 /* Global Styles */
 .app-container {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #333;
 }
 
 body {
@@ -16,6 +27,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  width: 90vw;
 }
 
 h1 {
@@ -130,16 +142,58 @@ input {
   color: #333;
 }
 
+.light body {
+  background-color: #fff;
+}
+
 .light h1 {
-  color: #333; /* Light theme color for h1 */
+  color: #333;
 }
 
 .light .expense-list {
-  background-color: #fff; /* Light theme background for expense list */
+  background-color: #fff;
 }
 
 .light .expense-item {
-  background-color: #f9f9f9; /* Light background for expense items */
+  background-color: #f9f9f9;
+}
+
+/* Dark Theme */
+.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark body {
+  background-color: #333;
+}
+
+.dark h1 {
+  color: #fff;
+}
+
+.dark .expense-list {
+  background-color: #444;
+}
+
+.dark .expense-item {
+  background-color: #555;
+}
+
+.dark .theme-toggle {
+  background-color: #6c757d;
+}
+
+.dark .theme-toggle:hover {
+  background-color: #495057;
+}
+
+.dark .submit-button {
+  background-color: #28a745;
+}
+
+.dark .submit-button:hover {
+  background-color: #218838;
 }
 
 /* Dark Theme */
@@ -216,4 +270,12 @@ input {
 
 .delete-btn {
   background-color: #dc3545;
+}
+
+footer {
+  margin-bottom: 10px;
+}
+
+.github-link {
+  color: #e0a800;
 }

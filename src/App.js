@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseForm from "./components/ExpenseForm";
 import "./App.css"; // Import the stylesheet
@@ -50,6 +50,11 @@ const App = () => {
     [theme]
   );
 
+  // Apply theme class to the body tag
+  useEffect(() => {
+    document.body.className = theme; // Set the class on the body element
+  }, [theme]);
+
   return (
     <div className={`app-container ${theme}`}>
       <header>
@@ -64,6 +69,11 @@ const App = () => {
         onRemoveExpense={removeExpense}
         onUpdateExpense={updateExpense}
       />
+      <footer>
+        <a className="github-link" href="https://github.com/pedrosilva410">
+          Coded with love by Pedro
+        </a>
+      </footer>
     </div>
   );
 };
