@@ -75,18 +75,20 @@ const ExpenseList = ({ expenses, onRemoveExpense, onUpdateExpense }) => {
                 <span>
                   {expense.description} - ${expense.amount} - {expense.category}
                 </span>
-                <button
-                  className="edit-btn"
-                  onClick={() => handleEdit(expense)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(expense.id)}
-                >
-                  Delete
-                </button>
+                <div>
+                  <button
+                    className="edit-btn"
+                    onClick={() => handleEdit(expense)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(expense.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </>
             )}
           </li>
